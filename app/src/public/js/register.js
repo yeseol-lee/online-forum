@@ -1,8 +1,6 @@
 "use strict";
 
-console.log("연결 확인");
-
-document.getElementById('register-form').addEventListener('submit', async(event) => {
+document.getElementById('register-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const username = event.target.username.value;
     const pwd = event.target.pwd.value;
@@ -31,10 +29,6 @@ document.getElementById('register-form').addEventListener('submit', async(event)
             event.target.pwd2.value = '';
         })
         .catch((err) => console.error(err));
-    
-
-    
-    
 
     
 })

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">메인화면으로 가기</a>
+    <h1>글 작성하기</h1>
+    <form id="create-form">
+        <div>
+            <label>작성자 정보 입력</label>
+            <div>username: <input id="username" type="text" placeholder="username"></div>
+            <div>비밀번호: <input id="pwd" type="password" placeholder="비밀번호"></div>
+        </div>
+        
+        <div><input id="title" type="text" placeholder="글 제목을 입력하세요"></div>
+        <div><textarea id="article" cols="30" rows="10" placeholder="본문을 입력하세요"></textarea></div>
+        <button type="submit">등록</button>
+    </form>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/create.js"></script>
+</body>
+</html>

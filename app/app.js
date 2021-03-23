@@ -17,6 +17,7 @@ app.set("view engine", "html");
 const indexRouter = require("./src/routes/home");
 const registerRouter = require("./src/routes/home/register");
 const articleRouter = require("./src/routes/home/article");
+const createRouter = require("./src/routes/home/create");
 
 //정적 경로 추가
 app.use(express.static(`${__dirname}/src/public`));
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/article", articleRouter);
+app.use("/create", createRouter);
 
 module.exports = app;
  
