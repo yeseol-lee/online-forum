@@ -8,7 +8,12 @@ pwd : varchar(20)
 charser utf8
 engine innodb
 
-//다음할것: user등록을 할 수 있게하자
-프론트에서 데이터 보내기 register.js 를 통해서
-/register/process실행 시 오류 고치는중
-(시퀄라이즈 관련 오류)
+//하는중
+두 번째 테이블 (작성한 글)을 만들자
+테이블 이름: articles
+칼럼
+id : primary key
+writer : varchar(20)
+created_at : datetime default now()
+title : varchar(100)
+text : text(65535)

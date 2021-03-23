@@ -16,6 +16,7 @@ app.set("view engine", "html");
 //라우팅
 const indexRouter = require("./src/routes/home");
 const registerRouter = require("./src/routes/home/register");
+const articleRouter = require("./src/routes/home/article");
 
 //정적 경로 추가
 app.use(express.static(`${__dirname}/src/public`));
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //미들웨어
 app.use("/", indexRouter);
 app.use("/register", registerRouter);
+app.use("/article", articleRouter);
 
 module.exports = app;
  
