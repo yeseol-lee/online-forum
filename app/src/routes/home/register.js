@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
     res.render("register.ejs");
 })
 
+//데이터베이스 내용 출력
 router.get("/process" , (req, res) => {
     User.findAll({raw: true})
         .then((users) => {
@@ -20,6 +21,18 @@ router.get("/process" , (req, res) => {
             next(err);
         });
         res.send("hello");
+
+    
+
+});
+
+//받아옴
+router.post("/process", (req, res) => {
+    User.create({
+        user: req.body.username,
+        pwd: req.body.pwd,
+    })
+
 });
 
 module.exports = router;

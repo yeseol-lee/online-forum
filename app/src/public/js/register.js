@@ -18,8 +18,11 @@ document.getElementById('register-form').addEventListener('submit', async(event)
     }
 
     //서버로 데이터 보내기
-    // try {
-    //     await axios.post('/register-process');
-    // }
+    try {
+        await axios.post('/register/process', { username, pwd });
+    } catch (err) {
+        console.error(err);
+    }
+
     console.log(username, pwd, pwd2);
 })
