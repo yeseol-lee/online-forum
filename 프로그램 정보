@@ -1,0 +1,14 @@
+데이터베이스 명: forum
+
+테이블 1: users
+칼럼 
+id : primary key
+user : varchar(20), unique
+pwd : varchar(20)
+charser utf8
+engine innodb
+
+//다음할것: user등록을 할 수 있게하자
+프론트에서 데이터 보내기 register.js 를 통해서
+/register/process실행 시 오류 고치는중
+(시퀄라이즈 관련 오류)

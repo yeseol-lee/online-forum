@@ -2,7 +2,10 @@
   "name": "forum",
   "version": "1.0.0",
   "dependencies": {
-    "nodemon": "^2.0.7"
+    "body-parser": "^1.19.0",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "sequelize": "^6.6.1"
   },
   "description": "",
   "main": "app.js",
@@ -10,7 +13,7 @@
     "app": "www.js"
   },
   "scripts": {
-    "start": "node ./bin/www.js",
+    "start": "nodemon ./bin/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
