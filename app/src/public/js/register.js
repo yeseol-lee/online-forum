@@ -16,13 +16,25 @@ document.getElementById('register-form').addEventListener('submit', async(event)
     if (pwd !== pwd2) {
         return alert('비밀번호가 같지 않습니다');
     }
-
+    
     //서버로 데이터 보내기
-    try {
-        await axios.post('/register/process', { username, pwd });
-    } catch (err) {
-        console.error(err);
-    }
+    axios.post('/register/process', { username, pwd })
+        .then((res) => {
+            //유저명 겹치지않으면 true를 받음
+            if (res.data.success === "true") {
+                alert("유저 등록에 성공하였습니다");
+            } else {
+                alert("이미 존재하는 유저명입니다");
+            }
+            event.target.username.value = '';
+            event.target.pwd.value = '';
+            event.target.pwd2.value = '';
+        })
+        .catch((err) => console.error(err));
+    
 
-    console.log(username, pwd, pwd2);
+    
+    
+
+    
 })
