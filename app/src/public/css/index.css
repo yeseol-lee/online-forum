@@ -1,6 +1,14 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: RGB(243, 243, 243);
+}
+
 /* header 부분 */
+
 #header-wrapper {
     height: 80px;
+    padding: 10px;
 }
 
 #header-wrapper a{
@@ -15,3 +23,41 @@ h1 {
     float: left;
 }
 
+
+/* 글 목록 부분 */
+#table {
+    padding: 15px;
+}
+
+thead {
+    border-bottom: 1px solid black;
+}
+td {
+    padding: 5px 10px;
+}
+
+/* 인덱스 숫자 부분 */
+#number {
+    margin: 10px;
+    padding-bottom: 20px;
+
+}
+
+#number label { 
+    margin-right: 20px;
+}
+
+.number {
+    margin: 5px;
+}
+
+/* 메인 부분 */
+main {
+    background-color:lightsalmon;
+}
+
+/* footer 부분 */
+footer div {
+    float: right;
+    padding: 5px;
+}

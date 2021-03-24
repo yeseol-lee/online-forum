@@ -89,7 +89,7 @@ function getLink(dataLength) {
     let i;
     let linkHTML = '';
     for (i = 1; i <= pageNum; i++) {
-        linkHTML += `<a href="/?page=${i}"> ${i} </a>`;
+        linkHTML += `<a href="/?page=${i}" class="number">${i}</a>`;
     }
     return linkHTML;
 }

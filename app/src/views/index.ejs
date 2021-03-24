@@ -9,23 +9,42 @@
     <title>게시판</title>
 </head>
 <body>
-    <div id="header-wrapper">
-        <h1>게시판</h1>
-        <a href="/register">사용자 등록하기</a>
-    </div>
+    <header>
+        <div id="header-wrapper">
+            <h1>게시판</h1>
+            <a href="/register">사용자 등록하기</a>
+            <a href="/create">글 작성</a>
+        </div>
+    </header>
+
+    <main>
+        <div id="table">
+            <table>
+                <h2>글 목록</h2>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%- tr %>
+                </tbody>     
+            </table>
+        </div>
+        
+        <div>
+            <div id="number"><label>페이지 이동</label><%- number %></div>
+        </div>
+    </main>
     
-    <div>
-        <h2>글 목록</h2>
-        <table>
-            <th>id</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>시간</th>
-            <%- tr %>
-        </table>
-    </div>
-    <div><%- number %></div>
-    <a href="/create">글 작성</a>
+    <footer>
+        <div>created-by yeseol-lee</div>
+    </footer>
+    
+    
     
 </body>
 </html>
