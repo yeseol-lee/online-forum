@@ -17,5 +17,16 @@ created_at : datetime default now()
 title : varchar(100)
 text : text(65535)
 
+세 번째 테이블 댓글을 저장하자
+테이블 이름: comments
+칼럼
+id : primary key
+writer : varchar(20)
+text varchar(300)
+article_num : INT unsigned
+created_at : datetime defalut now()
+
+
 //하는중 
-update기능 만드는중
+comment기능 만드는중
+

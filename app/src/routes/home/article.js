@@ -4,9 +4,9 @@ const express = require("express");
 const router = express.Router();
 const Article = require('../../models/index.js').Article;
 const User = require('../../models/index.js').User;
+const Comment = require('../../models/index.js').Comment;
 
 router.get("/", (req, res) => {
-    console.log("got /article");
     //쿼리아이디에 article id값을 넣어서 전달
     const qID = req.query.id;
     console.log(qID);
@@ -23,7 +23,8 @@ router.get("/", (req, res) => {
             writer: db.writer,
             created_at: db.created_at,
             text: db.text,
-            update: `<a href="/article/update/?id=${qID}">수정하기</a>`
+            update: `<a href="/article/update/?id=${qID}">수정하기</a>`,
+            qID: `<input id="qID" value=${qID} type="hidden">`,
         });
         res.json(data);
     })
@@ -63,6 +64,7 @@ router.get("/update", (req, res) => {
 
 })
 
+//비밀번호가 일치하는지 확인
 router.post("/update1", (req, res) => {
     const pwd = req.body.pwd;
     const qID = req.body.qID;
@@ -104,6 +106,7 @@ router.post("/update1", (req, res) => {
     
 })
 
+//비밀번호 일치 시 데이터베이스 정보 수정
 router.post("/update2", (req, res) => {
     const qID = req.body.qID;
     const title = req.body.title;
@@ -121,5 +124,49 @@ router.post("/update2", (req, res) => {
         res.json({"success": "true"});
     })
     .catch((err) => console.error(err));
+})
+
+//유저명, 비번이 일치하는지 확인
+router.post("/comment1", (req, res) => {
+    const username = req.body.username;
+    const pwd = req.body.pwd;
+
+    User.findOne({
+        raw: true,
+        attributes: ['pwd'],
+        where: {
+            user: `${username}`
+        },
+    })
+    .then((data) => {
+        const realPwd = data.pwd;
+        if (pwd === realPwd) {
+            res.json({"success": "true"});
+        } else {
+            res.json({"success": "false"});
+        }
+    })
+})
+
+router.post("/comment2", (req, res) => {
+     const writer = req.body.username;
+     const text = req.body.text;
+     const articleNum = req.body.articleNum;
+
+     //Comment 테이블에 댓글을 저장하자
+     Comment.create({
+        writer: writer,
+        text: text,
+        article_num: articleNum,
+    })
+    .then((data) => {
+        res.json({"success": "true"});
+    })
+    .catch((err) => {
+        console.error(err);
+        next(err);
+    });
+
+
 })
 module.exports = router;
