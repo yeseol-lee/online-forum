@@ -5,33 +5,61 @@ const router = express.Router();
 const Article = require('../../models/index.js').Article;
 const User = require('../../models/index.js').User;
 const Comment = require('../../models/index.js').Comment;
-
 router.get("/", (req, res) => {
     //쿼리아이디에 article id값을 넣어서 전달
     const qID = req.query.id;
-    console.log(qID);
-    Article.findAll({
+    
+    //우선 댓글들을 불러온다
+    Comment.findAll({
         raw: true,
+        attributes: ['writer', 'text', 'created_at'],
         where: {
-            id: `${qID}`
+            article_num: `${qID}`
         },
     })
+    //불러온 댓글들로 html 코드를 작성해서 넘겨준다
     .then((data) => {
-        const db = data[0];
-        res.render("article.ejs", {
-            title: db.title,
-            writer: db.writer,
-            created_at: db.created_at,
-            text: db.text,
-            update: `<a href="/article/update/?id=${qID}">수정하기</a>`,
-            qID: `<input id="qID" value=${qID} type="hidden">`,
-        });
-        res.json(data);
+        const length = data.length;
+        let commentHTML = '';
+
+        let i;
+        for (i = 0; i < length; i++) {
+            const writer = data[i].writer;
+            const text = data[i].text;
+            const created_at = data[i].created_at;
+            commentHTML += '<div>';
+            commentHTML += `<p>작성자: ${writer}, 작성시간:${created_at}</p>`;
+            commentHTML += `<p>${text}</p>`;
+            commentHTML += '</div>';
+        }
+        return commentHTML;
     })
-    .catch((err) => {
-        console.error(err);
-    });
-    
+    //글을 불러온 다음, render하기
+    .then((comments) => {
+        Article.findAll({
+            raw: true,
+            where: {
+                id: `${qID}`
+            },
+        })
+        .then((data) => {
+            const db = data[0];
+            res.render("article.ejs", {
+                title: db.title,
+                writer: db.writer,
+                created_at: db.created_at,
+                text: db.text,
+                update: `<a href="/article/update/?id=${qID}">수정하기</a>`,
+                qID: `<input id="qID" value=${qID} type="hidden">`,
+                comments: comments,
+            });
+            res.json(data);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    })
+    .catch((err) => console.error(err));
 });
 
 router.get("/update", (req, res) => {
@@ -169,4 +197,14 @@ router.post("/comment2", (req, res) => {
 
 
 })
+
+
+
+
+async function render(qID, res) {
+    const comments = await getComments(qID);
+
+    
+}
+
 module.exports = router;
