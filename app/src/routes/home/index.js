@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const Article = require('../../models/index.js').Article;
-
+const change = require("./function.js");
 
 
 router.get("/", (req, res) => {
@@ -23,13 +23,13 @@ router.get("/", (req, res) => {
         if (!page) page = '1';
         
         offset = dataLength - 10 * parseInt(page);
-        getList(dataLength, limit, offset, res);
+        renderList(dataLength, limit, offset, res);
 
         //가장 마지막페이지 => 글 개수가 10보다 작을 수 있다
         if (offset < 0) {
             limit = offset + 10;
             offset = 0;
-            getList(dataLength, limit, offset, res);
+            renderList(dataLength, limit, offset, res);
         }
         
     })
@@ -39,7 +39,7 @@ router.get("/", (req, res) => {
 
 
 //홈 화면으로 들어오면, database에서 글 목록을 가져와서 보내줌
-function getList(dataLength, limit, offset, res) {
+function renderList(dataLength, limit, offset, res) {
     Article.findAll({
         raw: true,
         attributes: ['id', 'writer', 'created_at', 'title'],
@@ -67,7 +67,8 @@ function getTr(data) {
         const id = data[i].id;
         const writer = data[i].writer;
         const title = data[i].title;
-        const createdAt = data[i].created_at;
+        const createdAt = change.dateForMain(data[i].created_at);
+
         tr += `<tr><td>${id}</td>
         <td><a href="/article/?id=${id}">${title}</a></td>
         <td>${writer}</td><td>${createdAt}</td></tr>`;

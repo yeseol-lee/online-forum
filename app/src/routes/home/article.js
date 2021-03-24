@@ -34,7 +34,7 @@ router.get("/", (req, res) => {
         }
         return commentHTML;
     })
-    //글을 불러온 다음, render하기
+    //본문 글을 불러온 다음, render하기
     .then((comments) => {
         Article.findAll({
             raw: true,
@@ -197,14 +197,5 @@ router.post("/comment2", (req, res) => {
 
 
 })
-
-
-
-
-async function render(qID, res) {
-    const comments = await getComments(qID);
-
-    
-}
 
 module.exports = router;

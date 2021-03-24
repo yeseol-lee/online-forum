@@ -1,0 +1,17 @@
+/* header 부분 */
+#header-wrapper {
+    height: 80px;
+}
+
+#header-wrapper a{
+    display: block;
+    float: right;
+    margin-top: 25px;
+    margin-right: 40px;
+}
+
+h1 {
+    width: 100px;
+    float: left;
+}
+
