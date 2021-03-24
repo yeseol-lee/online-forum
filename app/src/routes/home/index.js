@@ -7,7 +7,7 @@ const Article = require('../../models/index.js').Article;
 
 
 router.get("/", (req, res) => {
-    const page = req.query.page;
+    let page = req.query.page;
     
     //우선 페이지수를 계산함
     Article.findAll({
@@ -18,21 +18,20 @@ router.get("/", (req, res) => {
         const dataLength = data.length;
         let offset;
         let limit = 10;
-        //페이지 값이 존재하지않거나 1일 때 (default)  
-        if (!page || page === '1') {
-            offset = dataLength - 10;
+        
+        //page값을 가지고있지 않는 경우는 1로 친다
+        if (!page) page = '1';
+        
+        offset = dataLength - 10 * parseInt(page);
+        getList(dataLength, limit, offset, res);
+
+        //가장 마지막페이지 => 글 개수가 10보다 작을 수 있다
+        if (offset < 0) {
+            limit = offset + 10;
+            offset = 0;
             getList(dataLength, limit, offset, res);
-            
-        //1이외의 다른 페이지번호를 가지고있을 경우
-        } else {
-            offset = dataLength - 10 * parseInt(page);
-            getList(dataLength, limit, offset, res);
-            if (offset < 0) {
-                limit = offset + 10;
-                offset = 0;
-                getList(dataLength, limit, offset, res);
-            }
         }
+        
     })
     .catch((err) => console.error(err));
     
@@ -48,7 +47,6 @@ function getList(dataLength, limit, offset, res) {
         offset: parseInt(`${offset}`),
     })
     .then((data) => {
-        console.log(data.length);
         res.render("index.ejs", { 
             tr: getTr(data),
             number: getLink(dataLength),

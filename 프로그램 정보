@@ -18,7 +18,4 @@ title : varchar(100)
 text : text(65535)
 
 //하는중 
-routes/index.js
-매인페이지 10개 넘어가는 글은 다음 페이지에서 볼 수 있게하는것 만드는중
-페이지수 계산하는거에서 막힘
-asycn await, promise를 다시 공부해보자...
+update기능 만드는중
