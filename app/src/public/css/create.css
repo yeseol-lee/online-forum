@@ -1,0 +1,43 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: RGB(243, 243, 243);
+}
+
+/* header 부분 */
+#header-wrapper {
+    height: 80px;
+    padding: 10px;
+}
+
+#header-wrapper a{
+    display: block;
+    float: right;
+    margin-top: 25px;
+    margin-right: 40px;
+}
+
+h2 {
+    width: 250px;
+    float: left;
+}
+
+/* 메인 부분 */
+#create-form {
+    padding: 10px;
+    background-color: lightsalmon;
+}
+
+#title {
+    width: 300px;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 300px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 5px;
+}
