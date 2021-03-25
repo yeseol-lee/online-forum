@@ -1,0 +1,78 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: RGB(243, 243, 243);
+}
+
+/* header 부분 */
+#header-wrapper {
+    height: 80px;
+    padding: 10px;
+}
+
+#header-wrapper a{
+    display: block;
+    float: right;
+    margin-top: 25px;
+    margin-right: 40px;
+}
+
+h1 {
+    width: 100px;
+    float: left;
+}
+
+/* 본문 부분 */
+#main {
+    background-color: lightsalmon;
+    padding: 20px 20px 20px 20px;
+
+}
+
+#main article {
+    background-color: RGB(243, 243, 243);
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* 댓글 작성하기 */
+#mk-comment {
+    padding: 20px;
+}
+
+#info {
+    margin-top: 5px;
+    height: 20px;
+}
+#info div, #info label {
+    float: left;
+    margin-right: 10px;
+
+}
+
+#write {
+    margin-top: 5px;
+    float: left;
+}
+
+#comment-form button{
+    float: left;
+    margin-left: 10px;
+    margin-top: 6px;
+}
+
+#comment-form {
+    height: 60px;
+}
+
+/* 불러온 댓글 */
+#comments {
+    padding: 20px;
+}
+
+.comment label {
+    display: block;
+    float: left;
+    background-color:lightskyblue;
+    margin-right: 5px;
+}

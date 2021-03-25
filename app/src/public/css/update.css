@@ -1,0 +1,47 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: RGB(243, 243, 243);
+}
+
+/* header 부분 */
+#header-wrapper {
+    height: 70px;
+    padding: 10px;
+}
+
+#header-wrapper a{
+    display: block;
+    float: right;
+    margin-top: 25px;
+    margin-right: 40px;
+}
+
+h2 {
+    width: 150px;
+    float: left;
+}
+
+/* 메인 부분 */
+main {
+    padding: 20px;
+    background-color: RGB(234, 234, 234);
+}
+
+#title {
+    margin-bottom: 5px;
+    width: 333px;
+}
+
+#text {
+    margin-bottom: 5px;
+}
+
+#pwd {
+    float: left;
+    margin-right: 5px;
+}
+
+#update-form button{
+    margin-right: 5px;
+}

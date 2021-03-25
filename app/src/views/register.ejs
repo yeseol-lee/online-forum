@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="./css/register.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>사용자 등록하기</h1>
-    <form id="register-form">
-        <div>username: <input id="username" type="text" placeholder="username"></div>
-        <div>비밀번호: <input id="pwd" type="password" placeholder="비밀번호"></div>
-        <div>비밀번호 확인: <input id="pwd2" type="password" placeholder="비밀번호 확인"></div>
-        <button type="submit">등록</button>
-    </form>
-    <a href="/">메인화면으로 가기</a>
+    <header>
+        <div id="header-wrapper">
+            <h2>사용자 등록하기</h2>
+            <a href="/">메인화면으로 가기</a>
+        </div>
+        
+    </header>
+    
+
+    <div class="login-page">
+        <div class="form">
+          <form id="register-form">
+            <input id="username" type="text" placeholder="username"/>
+            <input id="pwd" type="password" placeholder="비밀번호"/>
+            <input id="pwd2" type="password" placeholder="비밀번호 확인"/>
+            <button type="submit">create</button>
+          </form>
+        </div>
+      </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/register.js"></script>

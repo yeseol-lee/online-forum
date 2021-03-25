@@ -1,6 +1,7 @@
 "use strict";
 
 document.getElementById('update-form').addEventListener('submit', (event) => {
+    alert("hell0");
     event.preventDefault();
     const title = event.target.title.value;
     const article = event.target.article.value;
@@ -38,3 +39,4 @@ document.getElementById('update-form').addEventListener('submit', (event) => {
 
     
 })
+

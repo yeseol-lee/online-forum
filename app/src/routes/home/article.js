@@ -5,6 +5,8 @@ const router = express.Router();
 const Article = require('../../models/index.js').Article;
 const User = require('../../models/index.js').User;
 const Comment = require('../../models/index.js').Comment;
+const change = require("./function.js");
+
 router.get("/", (req, res) => {
     //쿼리아이디에 article id값을 넣어서 전달
     const qID = req.query.id;
@@ -26,9 +28,9 @@ router.get("/", (req, res) => {
         for (i = 0; i < length; i++) {
             const writer = data[i].writer;
             const text = data[i].text;
-            const created_at = data[i].created_at;
-            commentHTML += '<div>';
-            commentHTML += `<p>작성자: ${writer}, 작성시간:${created_at}</p>`;
+            const created_at = change.dateForArticle(data[i].created_at);
+            commentHTML += '<div class="comment">';
+            commentHTML += `<p><label>${i+1}</label>작성자: ${writer}, 작성시간: ${created_at}</p>`;
             commentHTML += `<p>${text}</p>`;
             commentHTML += '</div>';
         }
@@ -47,7 +49,7 @@ router.get("/", (req, res) => {
             res.render("article.ejs", {
                 title: db.title,
                 writer: db.writer,
-                created_at: db.created_at,
+                created_at: change.dateForArticle(db.created_at),
                 text: db.text,
                 update: `<a href="/article/update/?id=${qID}">수정하기</a>`,
                 qID: `<input id="qID" value=${qID} type="hidden">`,
@@ -82,7 +84,7 @@ router.get("/update", (req, res) => {
         //수정 전 내용 넣어서 render하기
         res.render("update.ejs", {
             input: `<input id="title" type="text" value=${title} placeholder="글 제목을 입력하세요">`,
-            textarea: `<textarea id="article" cols="30" rows="10" placeholder="본문을 입력하세요">
+            textarea: `<textarea id="article" cols="40" rows="10" placeholder="본문을 입력하세요">
             ${article}</textarea>`,
             qID: `<input id="qID" value=${qID} type="hidden">`
         });

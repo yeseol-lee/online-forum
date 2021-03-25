@@ -13,5 +13,20 @@ const dateForMain = (obj) => {
     return string;
 }
 
+const dateForArticle = (obj) => {
+    let string = '';
 
-module.exports = { dateForMain, };
+    const year = obj.getFullYear();
+    const month = obj.getMonth() + 1;
+    const date = obj.getDate();
+    const hour = obj.getHours();
+    const min = obj.getMinutes();
+    const sec = obj.getSeconds();
+
+    string += `${year}.${month}.${date} ${hour}:${min}:${sec}`;
+
+    return string;
+    
+}
+
+module.exports = { dateForMain, dateForArticle};
