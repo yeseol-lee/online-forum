@@ -1,8 +1,8 @@
 "use strict";
 
 const app = require("../app");
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+app.listen(port, () => {
     console.log("서버 가동");
 });

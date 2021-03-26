@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('article', {
+        
         writer: {
             type: DataTypes.STRING(20),
             allowNull: false,

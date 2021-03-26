@@ -43,8 +43,7 @@ router.post("/process2", (req, res) => {
     const title = req.body.title;
     const article = req.body.article;
     const username = req.body.username;
-
-    console.log("프로세스2 진행중", title, article);
+    
     Article.create({
         writer: username,
         title: title,

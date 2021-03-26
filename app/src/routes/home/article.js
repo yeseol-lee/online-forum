@@ -80,7 +80,6 @@ router.get("/update", (req, res) => {
         const title = data.title;
         const article = data.text;
 
-        console.log(article);
         //수정 전 내용 넣어서 render하기
         res.render("update.ejs", {
             input: `<input id="title" type="text" value=${title} placeholder="글 제목을 입력하세요">`,
@@ -123,11 +122,9 @@ router.post("/update1", (req, res) => {
             //패스워드 일치 시 프론트로 성공 메시지 보내기
             if (pwd === realPwd) {
                 res.json({"success": "true"});
-                console.log("성공");
             //실패 시 실패 메시지 보냄
             } else {
                 res.json({"success": "false"});
-                console.log("실패");
             }
         })
 
@@ -141,9 +138,7 @@ router.post("/update2", (req, res) => {
     const qID = req.body.qID;
     const title = req.body.title;
     const article = req.body.article;
-
-    console.log(title);
-    console.log(qID, title, article);
+    
     //Article 테이블에 qID를 바탕으로 데이터 수정
     Article.update({
         title: `${title}`,
